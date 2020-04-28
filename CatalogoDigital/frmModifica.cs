@@ -41,10 +41,9 @@ namespace CatalogoDigital
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-             Articulo modificar;
+            Articulo modificar;
             modificar = (Articulo)dgvModificar.CurrentRow.DataBoundItem;
             frmAgregar frmAgregar = new frmAgregar(modificar);
-            frmAgregar.Text = "Modificar";
             frmAgregar.ShowDialog();
             cargarDatos();
         }

@@ -15,6 +15,7 @@ namespace CatalogoDigital
     {
         private Articulo articulo = null;
         frmModifica modifica = new frmModifica();
+        ArticuloNegocio negocio = new ArticuloNegocio();
         public frmAgregar()
         {
             InitializeComponent();
@@ -77,7 +78,7 @@ namespace CatalogoDigital
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            
             try
             {
                 if (articulo == null)
@@ -94,20 +95,17 @@ namespace CatalogoDigital
                 {
                     if (MessageBox.Show("¿Moidificar articulo?", "Modificar", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
+                        
                         negocio.modificar(articulo);
                         MessageBox.Show("Se ha modificado con exito");
                         Dispose();
                     }
                 }
                 else
-                { 
-                     if(MessageBox.Show("¿Finalizar agregar?", "Alta", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                     {
-                        negocio.Agregar(articulo);
-                        MessageBox.Show("Se ha cargado con exito");
-                        Dispose();
-        
-                     }
+                {
+
+                    ValidarDatos();
+                   
 
                 }
 
@@ -122,6 +120,153 @@ namespace CatalogoDigital
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboCategoria.ForeColor = Color.Black;
+
+        }
+
+        private void cboCategoria_DropDown(object sender, EventArgs e)
+        {
+            cboCategoria.ForeColor = Color.Black;
+            cboCategoria.Text = "";
+        }
+   
+      private void ValidarDatos ()
+        {
+
+            bool b = false;
+
+           
+           
+                if (txtBoxNombre.Text.Length == 0 || txtBoxNombre.Text == "¡Ingrese un nombre!")
+                {
+                    txtBoxNombre.Text = "¡Ingrese un nombre!";
+                    txtBoxNombre.ForeColor = Color.White;
+                    txtBoxNombre.BackColor = Color.Firebrick;
+
+                     b = true;
+                }
+
+
+                if (txtBoxDescripcion.Text.Length == 0 || txtBoxDescripcion.Text == "¡Ingrese una descripcion!")
+                {
+                    txtBoxDescripcion.ForeColor = Color.White;
+                    txtBoxDescripcion.Text = "¡Ingrese una descripcion!";
+                    txtBoxDescripcion.BackColor = Color.Firebrick;
+                     b = true;
+                }
+
+
+                if (txtBoxCodigo.Text.Length == 0 || txtBoxCodigo.Text == "¡Ingrese un codigo!")
+                {
+                    txtBoxCodigo.ForeColor = Color.White;
+                    txtBoxCodigo.Text = "¡Ingrese un codigo!";
+                    txtBoxCodigo.BackColor = Color.Firebrick;
+                    b = true;
+                }
+
+                if (cboCategoria.Text.Length == 0 || cboCategoria.Text == "¡Seleccione una categoria!")
+                {
+                    cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+                    cboCategoria.Text = "¡Seleccione una categoria!";
+
+                    cboCategoria.ForeColor = Color.Firebrick;
+                 b = true;
+                }
+
+                if (cboMarca.Text.Length == 0 || cboMarca.Text == "¡Seleccione una marca!")
+                {
+                cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+                cboMarca.Text = "¡Seleccione una marca!";
+                    cboMarca.ForeColor = Color.Firebrick;
+                b = true;
+                }
+
+            if(b==false)
+            { 
+            if (MessageBox.Show("¿Finalizar agregar?", "Alta", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                negocio.Agregar(articulo);
+                MessageBox.Show("Se ha cargado con exito");
+                Dispose();
+
+            }
+            }
+
+
+
+        }
+        private void cboCategoria_DropDownClosed(object sender, EventArgs e)
+        {
+            cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        }
+
+        private void txtBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+            txtBoxNombre.BackColor = Color.White;
+        }
+
+        private void txtBoxDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            txtBoxDescripcion.BackColor = Color.White;
+        }
+
+        private void txtBoxCodigo_TextChanged(object sender, EventArgs e)
+        {
+            txtBoxCodigo.BackColor = Color.White;
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboMarca.ForeColor = Color.Black;
+        }
+
+        private void cboMarca_DropDown(object sender, EventArgs e)
+        {
+            cboMarca.ForeColor = Color.Black;
+            cboMarca.Text = "";
+        }
+
+        private void cboMarca_DropDownClosed(object sender, EventArgs e)
+        {
+          cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        }
+
+        private void txtBoxNombre_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(txtBoxNombre.BackColor == Color.Firebrick)
+            {
+                txtBoxNombre.ForeColor = Color.Black;
+                txtBoxNombre.Text = "";
+                txtBoxNombre.BackColor = Color.White;
+
+            }
+        }
+
+        private void txtBoxDescripcion_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtBoxDescripcion.BackColor == Color.Firebrick)
+            {
+                txtBoxDescripcion.ForeColor = Color.Black;
+                txtBoxDescripcion.Text = "";
+                txtBoxDescripcion.BackColor = Color.White;
+
+            }
+        }
+
+        private void txtBoxCodigo_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtBoxCodigo.BackColor == Color.Firebrick)
+            {
+                txtBoxCodigo.ForeColor = Color.Black;
+                txtBoxCodigo.Text = "";
+                txtBoxCodigo.BackColor = Color.White;
+
+            }
         }
     }
 }

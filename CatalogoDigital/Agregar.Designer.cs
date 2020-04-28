@@ -113,6 +113,8 @@
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(275, 22);
             this.txtBoxNombre.TabIndex = 5;
+            this.txtBoxNombre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBoxNombre_MouseClick);
+            this.txtBoxNombre.TextChanged += new System.EventHandler(this.txtBoxNombre_TextChanged);
             // 
             // txtBoxCodigo
             // 
@@ -123,6 +125,8 @@
             this.txtBoxCodigo.Name = "txtBoxCodigo";
             this.txtBoxCodigo.Size = new System.Drawing.Size(275, 22);
             this.txtBoxCodigo.TabIndex = 7;
+            this.txtBoxCodigo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBoxCodigo_MouseClick);
+            this.txtBoxCodigo.TextChanged += new System.EventHandler(this.txtBoxCodigo_TextChanged);
             // 
             // txtBoxDescripcion
             // 
@@ -133,6 +137,8 @@
             this.txtBoxDescripcion.Name = "txtBoxDescripcion";
             this.txtBoxDescripcion.Size = new System.Drawing.Size(275, 22);
             this.txtBoxDescripcion.TabIndex = 6;
+            this.txtBoxDescripcion.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBoxDescripcion_MouseClick);
+            this.txtBoxDescripcion.TextChanged += new System.EventHandler(this.txtBoxDescripcion_TextChanged);
             // 
             // txtBoxImagen
             // 
@@ -211,6 +217,9 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(275, 24);
             this.cboCategoria.TabIndex = 16;
+            this.cboCategoria.DropDown += new System.EventHandler(this.cboCategoria_DropDown);
+            this.cboCategoria.SelectedIndexChanged += new System.EventHandler(this.cboCategoria_SelectedIndexChanged);
+            this.cboCategoria.DropDownClosed += new System.EventHandler(this.cboCategoria_DropDownClosed);
             // 
             // cboMarca
             // 
@@ -222,6 +231,9 @@
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(275, 24);
             this.cboMarca.TabIndex = 17;
+            this.cboMarca.DropDown += new System.EventHandler(this.cboMarca_DropDown);
+            this.cboMarca.SelectedIndexChanged += new System.EventHandler(this.cboMarca_SelectedIndexChanged);
+            this.cboMarca.DropDownClosed += new System.EventHandler(this.cboMarca_DropDownClosed);
             // 
             // btnCancelar
             // 

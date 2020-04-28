@@ -54,7 +54,7 @@ namespace CatalogoDigital
             {
                 frmModifica Modificar = new frmModifica();
                 Modificar.ShowDialog();
-                Articulo mod;
+               
                 
             }
             catch (Exception ex)
